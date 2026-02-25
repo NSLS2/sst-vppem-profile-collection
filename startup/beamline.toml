@@ -1,0 +1,29 @@
+[configuration]
+baseline = []
+has_slits = false
+has_motorized_samples = false
+has_motorized_eref = false
+has_polarization = false
+
+[detector_sets.default]
+primary = ""
+normalization = ""
+reference = ""
+
+[devices]
+
+[settings]
+startup_modules = ["nbs_bl.startup"]
+beamline = ["sst2", "sst1"]
+
+[settings.plans]
+
+
+[settings.redis.md]
+host = "info.sst.nsls2.bnl.gov"
+prefix = "vppem-"
+
+[settings.redis.info]
+host = "info.sst.nsls2.bnl.gov"
+prefix = "vppem-"
+db = 7

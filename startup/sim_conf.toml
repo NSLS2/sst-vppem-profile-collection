@@ -1,0 +1,21 @@
+[loaders]
+"PrettyMotor" = "nbs_sim.devices.motors.FakeMotor"
+"EpicsMotor" = "nbs_sim.devices.motors.FakeMotor"
+"DeadbandEpicsMotor" = "nbs_sim.devices.motors.FakeMotor"
+"FlyableMotor" = "nbs_sim.devices.motors.FakeMotor"
+"ADCBuffer" = "nbs_sim.devices.detectors.ADCVoltage"
+"ophScalar" = "nbs_sim.devices.detectors.GenericDetector"
+"EPS_Shutter" = "nbs_sim.devices.shutters.SSTShutter"
+"MultiMeshBuilder" = "nbs_sim.devices.manipulator.MultiMesh"
+"ManipulatorBuilder" = "nbs_sim.devices.manipulator.Manipulator"
+"EnPosFactory" = "nbs_sim.devices.energy.SST1Energy"
+"energypos" = "nbs_sim.devices.energy.HAXEnergy"
+"QuadSlits" = "nbs_sim.devices.slits.QuadSlits"
+"FloodGun" = "nbs_sim.devices.floodgun.HAXFloodgun"
+"FMBHexapodMirror" = "nbs_sim.devices.mirrors.FMBHexapodMirror"
+
+[devices]
+haxslt = {trans_min = 0, trans_max = 40, _group="apertures", _role="slits", user_limits=[0, 40]}
+slt_dm1 = {trans_min = 0, trans_max = 40, _group="apertures", _role="slits", user_limits=[0, 40]}
+ring_current = {_target = "nbs_sim.devices.signals.RingCurrent"}
+enpostender = {_role="energy", _load_order=1 }

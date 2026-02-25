@@ -1,0 +1,49 @@
+[gui]
+header = "sst-gui-header"
+
+[gui.tabs]
+include = ["nbs-gui-queue", "kafka-table-tab", "nbs-gui-console", "nbs-gui-monitor", "sst-gui-samples"]
+
+[gui.plans]
+include = [
+    "nbs-gui-scan",
+    "nbs-gui-move", 
+    "nbs-gui-xas",
+    "nbs-gui-timescan",
+    "nbs-gui-varscan",
+    "nbs-gui-flyscan",
+    "manual-sample-move",
+]
+
+[models.beamline]
+# primary_energy = "en"
+# primary_manipulator = "manipulator"
+loader = "nbs_bl.qt.models.beamline.SSTBeamlineModel"
+
+[devices]
+psh1 = { visible = false, view_only = true }
+FEsh1 = { view_only = true }
+psh4 = { visible = false }
+# enpostender = { "_role" = "energy", "load_order" = 1 }
+
+[loaders]
+"EnPosFactory" = "sst_base.qt.models.energy.SST1EnergyModel"
+"energypos" = "haxpes.qt.models.energy.SST2EnergyModel"
+"I400SingleCh" = "nbs_gui.models.ScalarModel"
+"PrettyMotorFMBO" = "nbs_gui.models.MotorModel"
+"PrettyMotor" = "nbs_gui.models.MotorModel"
+"FMBHexapodMirror" = "nbs_gui.models.MotorTupleModel"
+"EpicsSignalRO" = "nbs_gui.models.PVModel"
+"EpicsSignal" = "nbs_gui.models.PVModel"
+"ShutterSet" = "nbs_gui.models.GVModel"
+"EPS_Shutter" = "nbs_gui.models.GVModel"
+"ManipulatorBuilder" = "nbs_gui.models.PseudoPositionerModel"
+"ophScalar" = "nbs_gui.models.ScalarModel"
+"ADCBuffer" = "nbs_gui.models.ScalarModel"
+"EpicsMotor" = "nbs_gui.models.MotorModel"
+"MultiMeshBuilder" = "nbs_gui.models.PseudoPositionerModel"
+"QuadSlits" = "sst_base.qt.models.quadSlits.QuadSlitsModel"
+
+[kafka]
+config_file = "/etc/bluesky/kafka.yml"
+bl_acronym = "vppem"
