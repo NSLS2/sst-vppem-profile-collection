@@ -1,0 +1,14 @@
+[[catalog]]
+label = "VPPEM Tiled"
+source_type = "uri"
+url = "https://tiled.nsls2.bnl.gov"
+catalog_keys = ["vppem", "raw"]
+catalog_model = "nbscatalog"
+cache_credentials = false
+
+[[catalog]]
+label = "VPPEM Kafka"
+source_type = "kafka"
+config_file = "/etc/bluesky/kafka.yml"
+beamline_acronym = "vppem"
+autoload = true

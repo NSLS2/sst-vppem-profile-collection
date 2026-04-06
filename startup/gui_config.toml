@@ -16,7 +16,7 @@ include = [
 ]
 
 [models.beamline]
-# primary_energy = "en"
+primary_energy = "en"
 # primary_manipulator = "manipulator"
 loader = "nbs_bl.qt.models.beamline.SSTBeamlineModel"
 
@@ -24,7 +24,7 @@ loader = "nbs_bl.qt.models.beamline.SSTBeamlineModel"
 psh1 = { visible = false, view_only = true }
 FEsh1 = { view_only = true }
 psh4 = { visible = false }
-# enpostender = { "_role" = "energy", "load_order" = 1 }
+enpostender = { "_role" = "energy", "load_order" = 1 }
 
 [loaders]
 "EnPosFactory" = "sst_base.qt.models.energy.SST1EnergyModel"

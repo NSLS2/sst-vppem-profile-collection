@@ -43,7 +43,8 @@ pvxslibs = ">=1.3.2, <2"
 [feature.nbs.pypi-dependencies]
 nbs-core = { git = "https://github.com/xraygui/nbs-core", rev = "v0.0.2" }
 nbs-bl = { git = "https://github.com/xraygui/nbs-bl", branch = "planStatusUpdates" }
-sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "v0.1.0" }
+sst-base = { git = "https://github.com/nsls-ii-sst/sst_base", rev = "vppem" }
+haxpes = { git = "https://github.com/nsls-ii-sst/haxpes", branch = "mode_testing" }
 
 [feature.gui-base.dependencies]
 asteval = ">=1.0.6,<2"
@@ -53,7 +54,7 @@ qt6-wayland = "*"
 pyside6 = "*"
 
 [feature.gui.pypi-dependencies]
-livetable = { git="https://github.com/xraygui/livetable" }
+nbs-livetable = { git="https://github.com/xraygui/livetable" }
 nbs-gui = { git="https://github.com/xraygui/nbs-gui", rev="v0.1.1" }
 qtconsole = "*"
 
@@ -67,6 +68,9 @@ nbs-viewer = ">=0.3.4, <0.4"
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
 bluesky-httpserver = "*"
+
+[feature.sim.pypi-dependencies]
+nbs-sim = { git = "https://github.com/xraygui/nbs-sim", rev = "v0.1.0" }
 
 [feature.qs.tasks]
 # This section needs some development work to understand the best way to
@@ -95,9 +99,13 @@ gui-dev = "scripts/gui-dev.sh"
 viewer = "scripts/viewer-start.sh"
 viewer-dev = "scripts/viewer-dev.sh"
 
+[feature.sim.tasks]
+sim = "scripts/sim-start.sh"
+sim-dev = "scripts/sim-dev.sh"
 
 [environments]
 terminal = {features=["profile", "terminal"], solve-group="profile"}
 qs = {features=["profile", "nbs", "qs"], solve-group="profile"}
+sim = {features=["profile", "sim", "nbs"]}
 gui = {features=["profile", "nbs", "gui-base", "gui"], solve-group="profile"}
 viewer = {features=["profile", "gui-base", "viewer"], solve-group="profile"}

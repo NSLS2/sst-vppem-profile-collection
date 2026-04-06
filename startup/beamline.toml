@@ -13,7 +13,7 @@ reference = ""
 [devices]
 
 [settings]
-startup_modules = ["nbs_bl.startup"]
+startup_modules = ["nbs_bl.startup", "vppem.startup"]
 beamline = ["sst2", "sst1"]
 
 [settings.plans]
@@ -27,3 +27,14 @@ prefix = "vppem-"
 host = "info.sst.nsls2.bnl.gov"
 prefix = "vppem-"
 db = 7
+
+[settings.logging]
+enabled = true
+method = "nslsii"
+
+[settings.run_engine.tiled_writer]
+enabled = true
+profile = "nsls2"
+catalog_path = ["vppem", "raw"]
+api_key_env = "TILED_BLUESKY_WRITING_API_KEY_VPPEM"
+subscribe_method = "post_document"

@@ -1,68 +1,10 @@
 # Define your beamline-specific devices here
-[I0]
-_target = "sst_base.detectors.ADCBuffer"
-_group = "detectors"
-_role = "intensity_detector"
-prefix = "XF:07ID-BI[ADC:1-Ch:1]"
-name = "I0 ADC"
-
-[Idrain]
-_target = "sst_base.detectors.ADCBuffer"
-_group = "detectors"
-prefix = "XF:07ID-BI[ADC:1-Ch:0]"
-name="Sample Drain Current"
-
-[IK2600]
-_target = "nbs_bl.devices.ophScalar"
-_group = "detectors"
-prefix = "XF:07ID1{K2601B:1}RB-MeasI"
-name = "K2600_current"
-
-[Idm1]
-_target = "nbs_bl.devices.ophScalar"
-_group = "detectors"
-prefix = "XF:07ID-BI{DM3:F4}Cur:I2-I"
-name = "DM1 Photodiode"
-
-[Idm3]
-_target = "nbs_bl.devices.ophScalar"
-_group = "detectors"
-_defer_loading = true
-prefix = "XF:07ID-BI{DM3:F4}Cur:I0-I"
-name = "DM3 Photodiode"
-
-[Idm4]
-_target = "nbs_bl.devices.ophScalar"
-_group = "detectors"
-_defer_loading = true
-prefix = "XF:07ID-BI{DM5:F4}Cur:I1-I"
-name = "DM4 Photodiode"
-
-[M4Adrain]
-_target = "sst_base.detectors.ADCBuffer"
-_group = "detectors"
-_defer_loading = true
-prefix = "XF:07ID-BI[ADC:1-Ch:2]"
-name="M4A Drain Current"
-
-[I1]
-_target = "sst_base.detectors.ADCBuffer"
-_group = "detectors"
-prefix = "XF:07ID-BI[ADC:1-Ch:2]"
-name = "I1 ADC"
-
-[manipulator]
-_target = "sst_base.manipulator.ManipulatorBuilder"
-_group = "manipulators"
-_role = "primary_sampleholder"
-prefix = "XF:07ID1-BI{HAX-Ax:"
-name = "haxpes_manipulator"
 
 [enpostender]
 _target = "haxpes.devices.energy_tender.energypos"
-_group = "source"
-_modes = ["Tender"]
-prefix = ""
+_group = ["source", "blconf"]
+prefix = "SR:C07-ID:G1A{SST2:1}"
+#prefix = ""
 name = "SST2 Energy"
 
 [en]
@@ -81,80 +23,35 @@ _alias = "enpostender.harmonic"
 
 [U42]
 _alias = "enpostender.u42"
+_group = "motors"
 
-[gapoffset]
-_alias = "enpostender.offset_gap"
 
-[x2pitch]
-_alias = "enpostender.mono.x2pitch"
+[sampleVoltage]
+_target = "sst_base.devices.KeithleySMU"
+_group = ["motors", "detectors"]
+prefix = "XF:07ID1-ES{K2636B:1}"
+name = "sampleVoltage"
 
-[x2roll]
-_alias = "enpostender.mono.x2roll"
+[rbd1]
+_target = "sst_base.rbd9103.RBDFactory"
+_group = "detectors"
+prefix = "XF:07ID1-ES{RBD9103:5}"
+rescale = -1
+name = "rbd1"
 
-[x2perp]
-_alias = "enpostender.mono.x2perp"
+[rbd2]
+_target = "sst_base.rbd9103.RBDFactory"
+_group = "detectors"
+prefix = "XF:07ID1-ES{RBD9103:9}"
+rescale = -1
+name = "rbd2"
 
-[x2finepitch]
-_alias = "enpostender.mono.x2finepitch"
-
-[x2fineroll]
-_alias = "enpostender.mono.x2fineroll"
-
-[bragg]
-_alias = "enpostender.mono.bragg"
-
-[enpossoft]
-_target = "sst_base.energy.EnPosFactory"
-_group = "source"
-_load_order = 2
-_defer_loading = true
-_modes = ["Soft"]
-prefix = ""
-name = "en"
-
-[ensoft]
-_alias = "enpossoft.energy"
-_group = 'motors'
-_load_order = 2
-_role = "energy"
-
-[polsoft]
-_alias = "enpossoft.polarization"
-_group = 'motors'
-_load_order = 2
-_role = "polarization"
-
-[monosoft]
-_alias = "enpossoft.monoen"
-_load_order = 2
-
-[hsoft]
-_alias = "enpossoft.harmonic"
-_load_order = 2
-
-[undulatorgapsoft]
-_alias = "enpossoft.epugap"
-_load_order = 2
-
-[epuoffset]
-_alias = "enpossoft.offset_gap"
-_load_order = 2
-
-[haxslt]
-_target = "sst_base.slits.QuadSlitsLimitFactory"
-prefix = "XF:07ID2-OP{Slt:12-Ax:"
-_role = "slits"
-name = "HAXPES slits"
-kind = "hinted"
-limits = { "vcenter" = [-20, 20], "vsize" = [-1, 40], "hcenter" = [-20, 20], "hsize" = [-1, 40] }
-concurrent = 1
-
-[slt_dm1]
-_target = "sst_base.slits.QuadSlits"
-prefix = "XF:07ID6-OP{Slt:03-Ax:"
-name = "DM1_slits"
-kind = "hinted"
-concurrent = 1
+[rbd3]
+_target = "sst_base.rbd9103.RBDFactory"
+_group = "detectors"
+prefix = "XF:07ID1-ES{RBD9103:12}"
+rescale = -1
+name = "rbd3"
 
 [ring_current]
 _target = "ophyd.EpicsSignalRO"
@@ -162,87 +59,6 @@ _group = "signals"
 _role = "beam_current"
 prefix = "SR:OPS-BI{DCCT:1}I:Real-I"
 name = "ring_current"
-
-[dm1]
-_target = "sst_base.motors.PrettyMotor"
-_group = "motors"
-prefix = "XF:07ID6-BI{Diag:01-Ax:Y}Mtr"
-name = "DM1/FS03-Y"
-
-[dm3]
-_target = "sst_base.motors.PrettyMotor"
-_group = "motors"
-prefix = "XF:07ID3-BI{Diag:03-Ax:Y}Mtr"
-name = "DM3/FS08-Y"
-
-[dm4]
-_target = "sst_base.motors.PrettyMotor"
-_group = "motors"
-prefix = "XF:07ID5-BI{Diag:04-Ax:Y}Mtr"
-name = "DM4/FS09-Y"
-
-[nBPM]
-_target = "sst_base.motors.PrettyMotor"
-_group = "motors"
-prefix = "XF:07ID6-BI{BPM:1-Ax:Y}Mtr"
-name = "nBPM/C Filter"
-
-[L1]
-_target = "sst_base.mirrors.FMBHexapodMirror"
-_group = "mirrors"
-prefix = "XF:07IDA-OP{Mir:L1"
-name = "L1"
-kind = "hinted"
-
-[L2AB]
-_target = "sst_base.mirrors.FMBHexapodMirror"
-_group = "mirrors"
-prefix = "XF:07IDA6-OP{Mir:L2AB"
-name = "L2AB"
-kind = "hinted"
-
-[M3AB]
-_target = "sst_base.mirrors.FMBHexapodMirror"
-_group = "mirrors"
-prefix = "XF:07ID1-OP{Mir:M3ABC"
-name = "M3AB"
-kind = "hinted"
-
-[M4A]
-_target = "sst_base.mirrors.FMBHexapodMirror"
-_group = "mirrors"
-prefix = "XF:07ID3-OP{Mir:M4A"
-name = "M4A"
-kind = "hinted"
-
-[L2wedge]
-_target = "ophyd.EpicsMotor"
-_group = "motors"
-prefix = "XF:07IDA6-OP{Mir:L2AB-Ax:Y2}Mtr"
-name = "L2 Wedge"
-kind = "hinted"
-
-[SlitAB]
-_target = "ophyd.EpicsMotor"
-_group = "motors"
-_role = "slits"
-prefix = "XF:07ID3-OP{Slt:06-Ax:YGap}Mtr"
-name = "Exit Slit AB"
-kind = "hinted"
-
-[softbeamenable]
-_target = "ophyd.EpicsSignalRO"
-_group = "signals"
-prefix = "XF:07ID1-CT{Bl-Ctrl}Endstn-Sel"
-kind = "config"
-string = true
-
-[beamselection]
-_target = "ophyd.EpicsSignal"
-_group = "signals"
-prefix = "XF:07ID2-HAXMonitor:beamselect"
-name = "beam selection"
-string = true
 
 [beamon]
 _target = "ophyd.EpicsSignalRO"
@@ -322,67 +138,4 @@ openval = 1
 closeval = 0
 prefix = "XF:07IDB-VA:1{FS:4A}"
 name = "FS 4"
-
-[floodgun]
-_target = "haxpes.devices.floodgun.FloodGun"
-prefix = "XF:07ID-EGPS:1:"
-name = "FloodGun"
-
-[sampx]
-_alias = "manipulator.x"
-_group = 'motors'
-
-[sampy]
-_alias = "manipulator.y"
-_group = 'motors'
-
-[sampz]
-_alias = "manipulator.z"
-_group = 'motors'
-
-[sampr]
-_alias = "manipulator.r"
-_group = 'motors'
-
-[eslit]
-_alias = "haxslt.vsize"
-_group = "motors"
-
-[fbhor]
-_target = "haxpes.devices.pid_feedback.pid"
-prefix = "XF:07ID6-OP{Mono:DCM1-Fb:PF2}"
-name = "horizontal feedback"
-
-[fbvert]
-_target = "haxpes.devices.pid_feedback.pid"
-prefix = "XF:07ID6-OP{Mono:DCM1-Fb:RF2}"
-name = "vertical feedback"
-
-[peak_analyzer]
-_target = "haxpes.devices.peak_analyzer.PeakAnalyzer"
-_group = "detectors"
-name = "PeakAnalyzer"
-_defer_loading = true
-
-[ses]
-_target = "haxpes.devices.ses.SES"
-prefix = "XF:07ID-ES-SES"
-name = "SES"
-_defer_loading = true
-
-[haxSMU]
-_target = "haxpes.devices.k2600b.SMU"
-prefix = "XF:07ID1{K2601B:1}"
-name = "K2601B"
-
-[gonilateral]
-_target = "sst_base.motors.PrettyMotor"
-_group = "motors"
-prefix = "XF:07ID6-OP{Mono:DCM1-Ax:X}Mtr"
-name = "DCM goniometer lateral"
-
-[BPM4cent]
-_target = "haxpes.devices.hax_cam.simpleBPM"
-prefix = "XF:07ID-BI{BPM:4}"
-name  = "BPM4 Centroid"
 
