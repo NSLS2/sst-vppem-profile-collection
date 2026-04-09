@@ -28,21 +28,21 @@ _group = "motors"
 
 [sampleVoltage]
 _target = "sst_base.devices.KeithleySMU"
-_group = ["motors", "detectors"]
+_group = ["motors"]
 prefix = "XF:07ID1-ES{K2636B:1}"
 name = "sampleVoltage"
 
 [rbd1]
 _target = "sst_base.devices.RBDFactory"
 _group = "detectors"
-prefix = "XF:07ID1-ES{RBD9103:5}"
+prefix = "XF:07ID1-ES{RBD9103:05}"
 rescale = -1
 name = "rbd1"
 
 [rbd2]
 _target = "sst_base.devices.RBDFactory"
 _group = "detectors"
-prefix = "XF:07ID1-ES{RBD9103:9}"
+prefix = "XF:07ID1-ES{RBD9103:09}"
 rescale = -1
 name = "rbd2"
 
