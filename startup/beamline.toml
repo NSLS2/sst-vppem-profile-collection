@@ -32,9 +32,13 @@ db = 7
 enabled = true
 method = "nslsii"
 
-[settings.run_engine.tiled_writer]
-enabled = true
+[settings.tiled_writer]
+enabled = false
 profile = "nsls2"
 catalog_path = ["vppem", "raw"]
 api_key_env = "TILED_BLUESKY_WRITING_API_KEY_VPPEM"
 subscribe_method = "post_document"
+
+[settings.zmq]
+enabled = true
+host = "localhost:5577"

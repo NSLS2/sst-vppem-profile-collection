@@ -611,7 +611,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.25.0-py312h5253ce2_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb8e6e7a_2.conda
       - pypi: https://files.pythonhosted.org/packages/5b/08/185c3b29b0698328b202e6c965c23187e2e29ead78cb468aab0a09ee97fc/aioca-1.8.1-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#9d60169e86fc25dd712b3f6c0bfda96074004b9f
+      - pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#989800784b4498611d49328c5459634c5d7efcde
       - pypi: git+https://github.com/xraygui/livetable#ae996d3918e99be5636d4f7dc5ebfd91fbd6b344
       - pypi: git+https://github.com/xraygui/nbs-bl?branch=planStatusUpdates#9c743c1d130f7111bb5870f0ac320cdac39623b7
       - pypi: git+https://github.com/xraygui/nbs-core?rev=v0.0.2#2c2f50ad423927df146a4e981c3c8c1c45b0f0d0
@@ -620,7 +620,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/97/d2/3cb0980a6a4a2581facc4d47b2e7d99912a1f7065407f007f27419e19979/qtconsole-5.7.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=v0.1.0#c8b39aa520ca017007519e934f154d6b508d0208
+      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=vppem#c9b58f6c03c0524611a5bf77854ca3d047ae381e
       - pypi: https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl
   qs:
     channels:
@@ -1228,12 +1228,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.25.0-py312h5253ce2_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb8e6e7a_2.conda
       - pypi: https://files.pythonhosted.org/packages/5b/08/185c3b29b0698328b202e6c965c23187e2e29ead78cb468aab0a09ee97fc/aioca-1.8.1-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#9d60169e86fc25dd712b3f6c0bfda96074004b9f
+      - pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#989800784b4498611d49328c5459634c5d7efcde
       - pypi: git+https://github.com/xraygui/nbs-bl?branch=planStatusUpdates#9c743c1d130f7111bb5870f0ac320cdac39623b7
       - pypi: git+https://github.com/xraygui/nbs-core?rev=v0.0.2#2c2f50ad423927df146a4e981c3c8c1c45b0f0d0
       - pypi: https://files.pythonhosted.org/packages/35/0f/7820e5e0d3990b5916e70706c6b19a34b6335e2be2aca6f4e70b6a99cc5e/ophyd_async-0.12.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=v0.1.0#c8b39aa520ca017007519e934f154d6b508d0208
+      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=vppem#c9b58f6c03c0524611a5bf77854ca3d047ae381e
   sim:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -1824,14 +1824,14 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_6.conda
       - pypi: https://files.pythonhosted.org/packages/af/45/dacb6646c165083cdea681c66797ab3e41d99b97312469caf03a04042137/aioca-2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/57/64/eff2564783bd650ca25e15938d1c5b459cda997574a510f7de69688cb0b4/asyncio-4.0.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#9d60169e86fc25dd712b3f6c0bfda96074004b9f
+      - pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#989800784b4498611d49328c5459634c5d7efcde
       - pypi: git+https://github.com/xraygui/nbs-bl?branch=planStatusUpdates#9c743c1d130f7111bb5870f0ac320cdac39623b7
       - pypi: git+https://github.com/xraygui/nbs-core?rev=v0.0.2#2c2f50ad423927df146a4e981c3c8c1c45b0f0d0
       - pypi: git+https://github.com/xraygui/nbs-sim?rev=v0.1.0#a0de8056abdbd2c93887a4d3bb8bf17ab65dfa1d
       - pypi: https://files.pythonhosted.org/packages/c3/ab/0c92e9824c9e54df5a06b5759957fc23c30489c2aabef5653dd9057b3f61/ophyd_async-0.16-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/f8/6d/8500f4bece0aa7cd2af374739f2944c9fa52f0fc5e1d9e65a366f37f494a/scanspec-0.10.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=v0.1.0#c8b39aa520ca017007519e934f154d6b508d0208
+      - pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=vppem#c9b58f6c03c0524611a5bf77854ca3d047ae381e
       - pypi: https://files.pythonhosted.org/packages/72/89/0265b2b79424ed05b8d1e9c8fca71e1b150478e5b0c19aa50b0ae397326e/velocity_profile-1.0.0-py3-none-any.whl
   terminal:
     channels:
@@ -7153,9 +7153,9 @@ packages:
   purls: []
   size: 2384060
   timestamp: 1774276284520
-- pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#9d60169e86fc25dd712b3f6c0bfda96074004b9f
+- pypi: git+https://github.com/nsls-ii-sst/haxpes?branch=mode_testing#989800784b4498611d49328c5459634c5d7efcde
   name: haxpes
-  version: 0.1.dev168+g9d60169e8
+  version: 0.1.dev170+g989800784
   requires_dist:
   - bluesky
   - ophyd
@@ -15516,9 +15516,9 @@ packages:
   - pkg:pypi/sqlalchemy?source=hash-mapping
   size: 3704046
   timestamp: 1772644902869
-- pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=v0.1.0#c8b39aa520ca017007519e934f154d6b508d0208
+- pypi: git+https://github.com/nsls-ii-sst/sst_base?rev=vppem#c9b58f6c03c0524611a5bf77854ca3d047ae381e
   name: sst-base
-  version: 0.1.0
+  version: 0.1.1.dev21+gc9b58f6c0
   requires_dist:
   - bluesky
   - ophyd

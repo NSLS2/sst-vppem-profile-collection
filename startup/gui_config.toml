@@ -27,8 +27,8 @@ psh4 = { visible = false }
 enpostender = { "_role" = "energy", "load_order" = 1 }
 
 [loaders]
-"EnPosFactory" = "sst_base.qt.models.energy.SST1EnergyModel"
-"energypos" = "haxpes.qt.models.energy.SST2EnergyModel"
+"EnergySoftFactory" = "sst_base.qt.models.energy.SST1EnergyModel"
+"EnergyTender" = "sst_base.qt.models.energyTender.SST2EnergyModel"
 "I400SingleCh" = "nbs_gui.models.ScalarModel"
 "PrettyMotorFMBO" = "nbs_gui.models.MotorModel"
 "PrettyMotor" = "nbs_gui.models.MotorModel"

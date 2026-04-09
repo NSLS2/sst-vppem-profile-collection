@@ -1,14 +1,14 @@
 # Define your beamline-specific devices here
 
 [enpostender]
-_target = "haxpes.devices.energy_tender.energypos"
+_target = "sst_base.energy.EnergyTender"
 _group = ["source", "blconf"]
 prefix = "SR:C07-ID:G1A{SST2:1}"
 #prefix = ""
 name = "SST2 Energy"
 
 [en]
-_alias = "enpostender.energy"
+_alias = "enpostender.flycontrol"
 _group = "motors"
 _role = "energy"
 
@@ -33,21 +33,21 @@ prefix = "XF:07ID1-ES{K2636B:1}"
 name = "sampleVoltage"
 
 [rbd1]
-_target = "sst_base.rbd9103.RBDFactory"
+_target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:5}"
 rescale = -1
 name = "rbd1"
 
 [rbd2]
-_target = "sst_base.rbd9103.RBDFactory"
+_target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:9}"
 rescale = -1
 name = "rbd2"
 
 [rbd3]
-_target = "sst_base.rbd9103.RBDFactory"
+_target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:12}"
 rescale = -1
