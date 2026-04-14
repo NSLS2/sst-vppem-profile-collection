@@ -47,3 +47,7 @@ enpostender = { "_role" = "energy", "load_order" = 1 }
 [kafka]
 config_file = "/etc/bluesky/kafka.yml"
 bl_acronym = "vppem"
+
+[zmq]
+hostname = "localhost"
+port = 5578

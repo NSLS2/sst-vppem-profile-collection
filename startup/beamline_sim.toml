@@ -23,3 +23,6 @@ subscribe_method = "post_document"
 
 [settings.kafka]
 name = "nbs"
+
+[settings.zmq]
+hostname = "zmq_proxy2"
