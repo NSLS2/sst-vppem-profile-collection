@@ -1,0 +1,13 @@
+services:
+  acq_qs:
+    volumes:
+      - ${SSTDIR}/sst-base:/home/xf07id1/collection_packages/sst-base
+      - ${NBSDIR}/nbs-bl:/home/xf07id1/collection_packages/nbs-bl
+      - ${NBSDIR}/nbs-core:/home/xf07id1/collection_packages/nbs-core
+      - ${SSTDIR}/vppem:/home/xf07id1/collection_packages/vppem
+      - ${SSTDIR}/profile_collection_vppem/:/home/xf07id1/.ipython/profile_collection
+    working_dir: /home/xf07id1/.ipython/profile_collection
+    environment:
+      - IPYTHONDIR=/home/xf07id1/.ipython
+      - NBS_SIM_MODE=1
+    command: pixi run qs-dev

@@ -1,0 +1,10 @@
+services:
+  nbs-sim:
+    volumes:
+      - ${NBSDIR}:/home/xf07id1/collection_packages
+      - ${SSTDIR}/profile_collection_vppem/:/home/xf07id1/.ipython/profile_collection
+    working_dir: /home/xf07id1/.ipython/profile_collection
+    environment:
+      - IPYTHONDIR=/home/xf07id1/.ipython
+      - NBS_SIM_MODE=1
+    command: tail -f /dev/null #pixi run sim-dev
