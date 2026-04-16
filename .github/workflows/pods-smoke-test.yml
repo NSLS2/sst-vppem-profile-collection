@@ -23,7 +23,9 @@ jobs:
         uses: prefix-dev/setup-pixi@v0.9.5
         with:
           cache: true
-          environments: [pods, qs]
+          environments: |
+            pods
+            qs
 
       - name: Pods CLI smoke test
         shell: bash
