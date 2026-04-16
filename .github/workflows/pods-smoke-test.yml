@@ -12,7 +12,6 @@ jobs:
     permissions:
       contents: read
     env:
-      # Use upstream images for CI by default (can be overridden per-run).
       NBS_COLLECTION_PACKAGES: ${{ github.workspace }}/collection_packages
 
     steps:
@@ -23,7 +22,7 @@ jobs:
         uses: prefix-dev/setup-pixi@v0.9.5
         with:
           cache: true
-          environments: pods qs
+          environments: pods
 
       - name: Pods CLI smoke test
         shell: bash
@@ -102,18 +101,15 @@ jobs:
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
 
-      - name: Run qs pytest (via IPython profile)
+      - name: Run qs pytest inside queueserver container
         shell: bash
-        env:
-          NBS_SIM_MODE: "1"
         run: |
           set -euo pipefail
 
-          mkdir -p "${HOME}/.ipython"
-          rm -rf "${HOME}/.ipython/profile_collection"
-          ln -s "${GITHUB_WORKSPACE}" "${HOME}/.ipython/profile_collection"
+          QS_CONTAINER="$(podman ps --format '{{.Names}}' | grep -m1 'acq_qs')"
+          echo "Using queueserver container: ${QS_CONTAINER}"
 
-          pixi run -e qs qs-pytest
+          podman exec "${QS_CONTAINER}" bash -lc 'cd /home/xf07id1/.ipython/profile_collection && pixi run -e qs qs-pytest'
 
       - name: Tear down minimal pods
         if: ${{ always() }}
