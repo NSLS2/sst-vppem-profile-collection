@@ -20,12 +20,7 @@ jobs:
         uses: prefix-dev/setup-pixi@v0.9.5
         with:
           cache: true
-
-      - name: Install pods environment (locked)
-        shell: bash
-        run: |
-          set -euo pipefail
-          pixi install -e pods --locked
+          environments: pods
 
       - name: Pods CLI smoke test
         shell: bash
