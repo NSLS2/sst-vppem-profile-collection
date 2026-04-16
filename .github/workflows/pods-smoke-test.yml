@@ -38,7 +38,7 @@ jobs:
           pixi run -e pods pods-list | tee pods-list.txt
           grep -q "Available services" pods-list.txt
 
-      - name: Start minimal pods (bluesky-services, queueserver, sim)
+      - name: Start bluesky-services
         shell: bash
         run: |
           set -euo pipefail
@@ -46,17 +46,57 @@ jobs:
           podman --version
           podman info --debug || true
 
-          pixi run -e pods pods-start bluesky-services queueserver sim
-          sleep 10
+          pixi run -e pods pods-start bluesky-services
+
           for _ in $(seq 1 60); do
             podman ps --format '{{.Names}}' | tee podman-ps.txt
-            if grep -q "acq_qs" podman-ps.txt && grep -q "nbs-sim" podman-ps.txt && grep -q "mongo" podman-ps.txt; then
+            if grep -q "bluesky-services_mongo" podman-ps.txt && grep -q "bluesky-services_kafka" podman-ps.txt; then
               exit 0
             fi
             sleep 2
           done
 
-          echo "Timed out waiting for containers to be running." >&2
+          echo "Timed out waiting for bluesky-services to be running." >&2
+          podman ps -a || true
+          podman logs --tail 200 $(podman ps -aq) || true
+          exit 1
+
+      - name: Start queueserver
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          pixi run -e pods pods-start queueserver
+
+          for _ in $(seq 1 60); do
+            podman ps --format '{{.Names}}' | tee podman-ps.txt
+            if grep -q "acq_qs" podman-ps.txt; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "Timed out waiting for queueserver to be running." >&2
+          podman ps -a || true
+          podman logs --tail 200 $(podman ps -aq) || true
+          exit 1
+
+      - name: Start sim
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          pixi run -e pods pods-start sim
+
+          for _ in $(seq 1 60); do
+            podman ps --format '{{.Names}}' | tee podman-ps.txt
+            if grep -q "nbs-sim" podman-ps.txt; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "Timed out waiting for sim to be running." >&2
           podman ps -a || true
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
