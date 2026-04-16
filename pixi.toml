@@ -61,6 +61,7 @@ nbs-viewer = ">=0.3.4, <0.4"
 [feature.qs.dependencies]
 bluesky-queueserver = "*"
 bluesky-httpserver = "*"
+pytest = "*"
 
 [feature.sim.pypi-dependencies]
 nbs-sim = ">=0.2.2"
@@ -90,6 +91,7 @@ qs-server = "uvicorn --host localhost --port 60610 bluesky_httpserver.server:app
 qs = "scripts/qs-start.sh"
 qs-dev = "scripts/qs-dev.sh"
 zmq-proxy = "bluesky-0MQ-proxy 5577 5578"
+qs-pytest = "ipython --profile collection -c \"import os, sys, pytest; rc = pytest.main(['-v','tests/test_ipython_namespace.py']); sys.stdout.flush(); sys.stderr.flush(); os._exit(rc)\""
 
 [feature.terminal.tasks]
 start = "unset SESSION_MANAGER && MPLBACKEND=qtagg ipython --profile-dir=."

@@ -23,7 +23,7 @@ jobs:
         uses: prefix-dev/setup-pixi@v0.9.5
         with:
           cache: true
-          environments: pods
+          environments: [pods, qs]
 
       - name: Pods CLI smoke test
         shell: bash
@@ -62,32 +62,12 @@ jobs:
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
 
-      - name: Start queueserver
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          pixi run -e pods pods-start queueserver
-
-          for _ in $(seq 1 60); do
-            timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
-            if grep -q "acq_qs" podman-ps.txt; then
-              exit 0
-            fi
-            sleep 2
-          done
-
-          echo "Timed out waiting for queueserver to be running." >&2
-          podman ps -a || true
-          podman logs --tail 200 $(podman ps -aq) || true
-          exit 1
-
       - name: Start sim
         shell: bash
         run: |
           set -euo pipefail
 
-          pixi run -e pods pods-start sim
+          pixi run -e pods pods-start --dev sim
 
           for _ in $(seq 1 60); do
             timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
@@ -102,11 +82,44 @@ jobs:
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
 
+      - name: Start queueserver
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          pixi run -e pods pods-start --dev queueserver
+
+          for _ in $(seq 1 60); do
+            timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
+            if grep -q "acq_qs" podman-ps.txt; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "Timed out waiting for queueserver to be running." >&2
+          podman ps -a || true
+          podman logs --tail 200 $(podman ps -aq) || true
+          exit 1
+
+      - name: Run qs pytest (via IPython profile)
+        shell: bash
+        env:
+          NBS_SIM_MODE: "1"
+        run: |
+          set -euo pipefail
+
+          mkdir -p "${HOME}/.ipython"
+          rm -rf "${HOME}/.ipython/profile_collection"
+          ln -s "${GITHUB_WORKSPACE}" "${HOME}/.ipython/profile_collection"
+
+          pixi run -e qs qs-pytest
+
       - name: Tear down minimal pods
         if: ${{ always() }}
         shell: bash
         run: |
           set -euo pipefail
-          pixi run -e pods pods-stop bluesky-services queueserver sim || true
+          pixi run -e pods pods-stop queueserver sim bluesky-services || true
           podman ps -a || true
 
