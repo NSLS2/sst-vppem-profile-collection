@@ -8,7 +8,7 @@ export BEAMLINE_PODS_DIR
 export BEAMLINE_NAME="vppem"
 
 if [[ -z "${NBS_IMAGE_REG:-}" ]]; then
-  export NBS_IMAGE_REG="ghcr.io/nsls2/sst-vppem-profile-collection/vppem-"
+  export NBS_IMAGE_REG="ghcr.io/nsls2/sst-"${BEAMLINE_NAME}"-profile-collection/"${BEAMLINE_NAME}"-"
 fi
 
 if [[ $# -eq 0 ]]; then

@@ -10,5 +10,5 @@ if [[ $# -eq 0 ]]; then
   exec podman-compose -f docker-compose.build.yml build
 fi
 
-exec podman-compose -f docker-compose.build.yml build "$@"
+exec podman-compose -f docker-compose.build.yml --podman-build-args="--ulimit nofile=131072:131072" build "$@"
 

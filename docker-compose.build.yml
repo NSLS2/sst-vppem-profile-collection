@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  vppem-bluesky:
+  bluesky:
     build:
       context: .
       dockerfile: images/bluesky/Containerfile
@@ -9,7 +9,7 @@ services:
         BASE_IMAGE: ghcr.io/xraygui/nbs-pods/bluesky:latest
     image: vppem-bluesky:latest
 
-  vppem-queueserver:
+  queueserver:
     build:
       context: .
       dockerfile: images/queueserver/Containerfile
@@ -19,7 +19,7 @@ services:
     depends_on:
       - vppem-bluesky
 
-  vppem-gui:
+  gui:
     build:
       context: .
       dockerfile: images/gui/Containerfile
@@ -29,7 +29,7 @@ services:
     depends_on:
       - vppem-bluesky
 
-  vppem-sim:
+  sim:
     build:
       context: .
       dockerfile: images/sim/Containerfile
@@ -38,4 +38,3 @@ services:
     image: vppem-sim:latest
     depends_on:
       - vppem-bluesky
-

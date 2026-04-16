@@ -1,0 +1,44 @@
+name: Pods smoke test
+
+on:
+  pull_request:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  pods-smoke-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Pixi
+        uses: prefix-dev/setup-pixi@v0.9.5
+        with:
+          cache: true
+
+      - name: Install pods environment (locked)
+        shell: bash
+        run: |
+          set -euo pipefail
+          pixi install -e pods --locked
+
+      - name: Pods CLI smoke test
+        shell: bash
+        env:
+          # Future-proofing: some dev compose files may mount this path.
+          NBS_COLLECTION_PACKAGES: ${{ github.workspace }}/collection_packages
+        run: |
+          set -euo pipefail
+
+          mkdir -p "${NBS_COLLECTION_PACKAGES}"
+
+          pixi run -e pods pods -- --help
+          pixi run -e pods podman-compose --version || true
+
+          pixi run -e pods pods-list
+
