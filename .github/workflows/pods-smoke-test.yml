@@ -48,8 +48,9 @@ jobs:
 
           pixi run -e pods pods-start bluesky-services
 
-          for _ in $(seq 1 60); do
-            podman ps --format '{{.Names}}' | tee podman-ps.txt
+          for i in $(seq 1 60); do
+            echo "wait_iter=${i}"
+            timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
             if grep -q "bluesky-services_mongo" podman-ps.txt && grep -q "bluesky-services_kafka" podman-ps.txt; then
               exit 0
             fi
@@ -69,7 +70,7 @@ jobs:
           pixi run -e pods pods-start queueserver
 
           for _ in $(seq 1 60); do
-            podman ps --format '{{.Names}}' | tee podman-ps.txt
+            timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
             if grep -q "acq_qs" podman-ps.txt; then
               exit 0
             fi
@@ -89,7 +90,7 @@ jobs:
           pixi run -e pods pods-start sim
 
           for _ in $(seq 1 60); do
-            podman ps --format '{{.Names}}' | tee podman-ps.txt
+            timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
             if grep -q "nbs-sim" podman-ps.txt; then
               exit 0
             fi
