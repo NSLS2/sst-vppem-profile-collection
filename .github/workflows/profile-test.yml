@@ -1,4 +1,4 @@
-name: Pods smoke test
+name: VPPEM Bluesky Profile Testing
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Pixi
         uses: prefix-dev/setup-pixi@v0.9.5
@@ -30,6 +30,7 @@ jobs:
           set -euo pipefail
 
           mkdir -p "${NBS_COLLECTION_PACKAGES}"
+          mkdir -p /tmp/proposals
 
           pixi run -e pods pods -- --help
           pixi run -e pods podman-compose --version || true
@@ -60,6 +61,25 @@ jobs:
           podman ps -a || true
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
+      - name: Start ADSim
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          pixi run -e pods pods-start adsim
+
+          for _ in $(seq 1 60); do
+            timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
+            if grep -q "adsim_adsim" podman-ps.txt; then
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "Timed out waiting for ADSim to be running." >&2
+          podman ps -a || true
+          podman logs --tail 200 $(podman ps -aq) || true
+          exit 1
 
       - name: Start sim
         shell: bash
@@ -70,7 +90,7 @@ jobs:
 
           for _ in $(seq 1 60); do
             timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
-            if grep -q "nbs-sim" podman-ps.txt; then
+            if grep -q "sim_sim" podman-ps.txt; then
               exit 0
             fi
             sleep 2
@@ -81,35 +101,12 @@ jobs:
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
 
-      - name: Start queueserver
+      - name: Start queueserver test
         shell: bash
         run: |
           set -euo pipefail
 
-          pixi run -e pods pods-start --dev queueserver
-
-          for _ in $(seq 1 60); do
-            timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
-            if grep -q "acq_qs" podman-ps.txt; then
-              exit 0
-            fi
-            sleep 2
-          done
-
-          echo "Timed out waiting for queueserver to be running." >&2
-          podman ps -a || true
-          podman logs --tail 200 $(podman ps -aq) || true
-          exit 1
-
-      - name: Run qs pytest inside queueserver container
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          QS_CONTAINER="$(podman ps --format '{{.Names}}' | grep -m1 'acq_qs')"
-          echo "Using queueserver container: ${QS_CONTAINER}"
-
-          podman exec "${QS_CONTAINER}" bash -lc 'cd /home/xf07id1/.ipython/profile_collection && pixi run -e qs qs-pytest'
+          pixi run -e pods pods-start --test queueserver
 
       - name: Tear down minimal pods
         if: ${{ always() }}

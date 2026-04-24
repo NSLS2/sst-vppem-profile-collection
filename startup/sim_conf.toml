@@ -23,6 +23,7 @@
 "pid" = "nbs_sim.devices.pid.PIDGroup"
 "KeithleySMU" = "nbs_sim.devices.k2600b.K2600B"
 "RBDFactory" = "nbs_sim.devices.rbd9103.RBD9103"
+"PCOEdge" = "nbs_sim.devices.pcoedge.PCOEdgeDetector"
 
 [devices]
 haxslt = {trans_min = 0, trans_max = 40, _group="apertures", _role="slits", user_limits=[0, 40]}

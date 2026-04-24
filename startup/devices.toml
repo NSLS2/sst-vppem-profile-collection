@@ -1,4 +1,10 @@
 # Define your beamline-specific devices here
+[pco]
+_target = "vppem.devices.PCOEdgeDetectorSingleTrigger"
+prefix = "XF:07ID1-ES{PCO-Det:1}"
+name = "PCOEdge"
+read_attrs = ["hdf5", "stats"]
+_group = ['detectors']
 
 [enpostender]
 _target = "sst_base.energy.EnergyTender"

@@ -1,0 +1,16 @@
+version: '3'
+
+networks:
+  bluesky-services_bluesky:
+    external: true
+
+services:
+  adsim:
+    image: docker.io/prjemian/synapps:latest
+    environment:
+      - PREFIX='XF:07ID1-ES{PCO-Det:1}'
+    volumes:
+      - /tmp/proposals:/nsls2/data/sst/proposals/
+    command: bash -c "/root/bin/adsim.sh start && tail -f /dev/null"
+    networks:
+      - bluesky-services_bluesky

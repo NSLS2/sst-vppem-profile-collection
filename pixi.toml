@@ -8,20 +8,20 @@ version = "2025.3.1"
 libc = "2.17"
 
 [feature.profile.dependencies]
-bluesky-base = ">=1.14.4"
+bluesky-base = "==1.15"
 bluesky-queueserver = "*"
 matplotlib-base= ">=3.9.3,<4"
 networkx = ">=3.4.2,<4"
-nslsii = "==0.11.4"
+nslsii = "==0.11.8"
 numpy = "*"
 ophyd = ">=1.11.0"
 pyepics = "*"
 python = ">=3.12,<3.13"
 semver = ">=3.0.4,<4"
-tiled-client = ">=0.1.6"
+tiled-client = ">=0.2.9"
 ipython = ">=9.5.0,<10"
 databroker = "==2.0.0"
-bluesky-tiled-plugins = ">=2.0.0b68"
+bluesky-tiled-plugins = ">=2.0.2"
 hdf5-external-filter-plugins = ">=0.1.0,<0.2"
 blosc-hdf5-plugin = ">=1.0.1,<2"
 p4p = ">=4.2.0,<5"
@@ -36,7 +36,7 @@ pvxslibs = ">=1.3.2, <2"
 [feature.nbs.pypi-dependencies]
 nbs-core = ">=0.2"
 nbs-bl = ">=0.3"
-sst-base = { git = "https://github.com/nsls-ii-sst/sst-base", rev = "vppem" }
+sst-base = { git = "https://github.com/nsls-ii-sst/sst-base", rev = "v0.2.2" }
 vppem = { git = "https://github.com/nsls-ii-sst/vppem" }
 
 [feature.gui-base.dependencies]
@@ -91,7 +91,7 @@ qs-server = "uvicorn --host localhost --port 60610 bluesky_httpserver.server:app
 qs = "scripts/qs-start.sh"
 qs-dev = "scripts/qs-dev.sh"
 zmq-proxy = "bluesky-0MQ-proxy 5577 5578"
-qs-pytest = "ipython --profile collection -c \"import os, sys, pytest; rc = pytest.main(['-v','tests/']); sys.stdout.flush(); sys.stderr.flush(); os._exit(rc)\""
+qs-pytest = "scripts/test-profile.sh"
 
 [feature.terminal.tasks]
 start = "unset SESSION_MANAGER && MPLBACKEND=qtagg ipython --profile-dir=."

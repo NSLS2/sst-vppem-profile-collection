@@ -35,7 +35,7 @@ jobs:
 
     - name: Docker meta for vppem-bluesky
       id: meta-vppem-bluesky
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@v6
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/vppem-bluesky
         tags: |
@@ -47,7 +47,7 @@ jobs:
           type=sha
 
     - name: Build and push vppem-bluesky image
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: ./images/bluesky/Containerfile
@@ -59,7 +59,7 @@ jobs:
 
     - name: Docker meta for vppem-queueserver
       id: meta-vppem-queueserver
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@v6
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/vppem-queueserver
         tags: |
@@ -71,7 +71,7 @@ jobs:
           type=sha
 
     - name: Build and push vppem-queueserver image
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: ./images/queueserver/Containerfile
@@ -85,7 +85,7 @@ jobs:
 
     - name: Docker meta for vppem-gui
       id: meta-vppem-gui
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@v6
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/vppem-gui
         tags: |
@@ -97,7 +97,7 @@ jobs:
           type=sha
 
     - name: Build and push vppem-gui image
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: ./images/gui/Containerfile
@@ -111,7 +111,7 @@ jobs:
 
     - name: Docker meta for vppem-sim
       id: meta-vppem-sim
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@v6
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/vppem-sim
         tags: |
@@ -123,7 +123,7 @@ jobs:
           type=sha
 
     - name: Build and push vppem-sim image
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: ./images/sim/Containerfile
