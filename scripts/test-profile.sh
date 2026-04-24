@@ -10,4 +10,32 @@ export TESTS_DIR
 pip install -v -e /home/xf07id1/collection_packages/vppem --no-deps
 echo "test-profile: pip install -e vppem (--no-deps) completed"
 python -c "import importlib.util as u; print(u.find_spec('vppem'))"
-ipython --profile collection -c 'import os, sys, pytest, time; time.sleep(10); print(os.environ["TESTS_DIR"]); rc = pytest.main(["-v", os.environ["TESTS_DIR"]]); sys.stdout.flush(); sys.stderr.flush(); os._exit(rc)'
+
+PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 ipython --profile collection -c '
+import os, sys, faulthandler, time, threading
+
+faulthandler.enable(file=sys.stderr)
+
+def _watchdog():
+    pid = os.getpid()
+    while True:
+        time.sleep(60)
+        try:
+            with open(f"/proc/{pid}/status") as f:
+                for line in f:
+                    if line.startswith(("VmRSS", "VmPeak", "Threads")):
+                        print(f"[watchdog] {line.strip()}", flush=True)
+        except Exception:
+            pass
+        faulthandler.dump_traceback(file=sys.stderr, all_threads=True)
+
+threading.Thread(target=_watchdog, daemon=True, name="watchdog").start()
+
+import pytest
+print("test-profile: profile loaded, starting pytest at", time.strftime("%H:%M:%S"), flush=True)
+rc = pytest.main(["-v", os.environ["TESTS_DIR"]])
+print("test-profile: pytest finished with rc=", rc, flush=True)
+sys.stdout.flush()
+sys.stderr.flush()
+os._exit(rc)
+'
