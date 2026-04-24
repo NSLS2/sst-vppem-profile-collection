@@ -126,7 +126,7 @@ jobs:
               echo "--- podman ps ---"
               podman ps --format '{{.Names}}\t{{.Status}}' || true
               echo "--- queueserver logs (tail 30) ---"
-              podman logs --tail 30 queueserver 2>&1 || true
+              podman logs --tail 30 queueserver_queueserver_1 2>&1 || true
               echo "==="
               sleep 20
             done
