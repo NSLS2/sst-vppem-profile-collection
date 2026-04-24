@@ -32,6 +32,12 @@ jobs:
           mkdir -p "${NBS_COLLECTION_PACKAGES}"
           mkdir -p /tmp/proposals
 
+          if [ ! -d "${NBS_COLLECTION_PACKAGES}/vppem/.git" ]; then
+            git clone https://github.com/nsls-ii-sst/vppem.git "${NBS_COLLECTION_PACKAGES}/vppem"
+          else
+            git -C "${NBS_COLLECTION_PACKAGES}/vppem" pull --ff-only
+          fi
+
           pixi run -e pods pods -- --help
           pixi run -e pods podman-compose --version || true
 
@@ -61,6 +67,7 @@ jobs:
           podman ps -a || true
           podman logs --tail 200 $(podman ps -aq) || true
           exit 1
+
       - name: Start ADSim
         shell: bash
         run: |
@@ -113,6 +120,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          pixi run -e pods pods-stop queueserver sim bluesky-services || true
+          pixi run -e pods pods-stop queueserver sim bluesky-services adsim || true
           podman ps -a || true
 
