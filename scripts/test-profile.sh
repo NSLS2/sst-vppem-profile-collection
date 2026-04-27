@@ -33,7 +33,7 @@ threading.Thread(target=_watchdog, daemon=True, name="watchdog").start()
 
 import pytest
 print("test-profile: profile loaded, starting pytest at", time.strftime("%H:%M:%S"), flush=True)
-rc = pytest.main(["-v", os.environ["TESTS_DIR"]])
+rc = pytest.main(["-v", "-s",os.environ["TESTS_DIR"]])
 print("test-profile: pytest finished with rc=", rc, flush=True)
 sys.stdout.flush()
 sys.stderr.flush()
