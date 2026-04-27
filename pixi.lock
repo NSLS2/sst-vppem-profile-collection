@@ -630,7 +630,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.2#53c1b482f939f9fe9392aea5860eecd056af9ba6
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem#b738708672bd0cc61364b11e827780141e667138
+      - pypi: git+https://github.com/nsls-ii-sst/vppem#4c98524c52fc258942c4f6d7b4f9cd413d72b5b3
   pods:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -1245,13 +1245,13 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zlib-ng-2.3.3-hceb46e0_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.25.0-py312h5253ce2_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_6.conda
-      - pypi: git+https://github.com/xraygui/nbs-pods.git#bb6a158d3f8c29c7ad7633bb6781860b2e1ffc1a
+      - pypi: git+https://github.com/xraygui/nbs-pods.git#df1b0fa331b5524cfe63c43a81c3daaab7483b0f
       - pypi: https://files.pythonhosted.org/packages/e6/57/3c31d01017df2f8bb93d1d391409bf53ef775a59d916d6f8da059b5a4176/nbs_bl-0.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.2#53c1b482f939f9fe9392aea5860eecd056af9ba6
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem#b738708672bd0cc61364b11e827780141e667138
+      - pypi: git+https://github.com/nsls-ii-sst/vppem#4c98524c52fc258942c4f6d7b4f9cd413d72b5b3
   qs:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -1876,7 +1876,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.2#53c1b482f939f9fe9392aea5860eecd056af9ba6
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem#b738708672bd0cc61364b11e827780141e667138
+      - pypi: git+https://github.com/nsls-ii-sst/vppem#4c98524c52fc258942c4f6d7b4f9cd413d72b5b3
   sim:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -2496,7 +2496,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.2#53c1b482f939f9fe9392aea5860eecd056af9ba6
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem#b738708672bd0cc61364b11e827780141e667138
+      - pypi: git+https://github.com/nsls-ii-sst/vppem#4c98524c52fc258942c4f6d7b4f9cd413d72b5b3
   terminal:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -9299,9 +9299,9 @@ packages:
   - nslsii
   - qtpy
   requires_python: '>=3.8'
-- pypi: git+https://github.com/xraygui/nbs-pods.git#bb6a158d3f8c29c7ad7633bb6781860b2e1ffc1a
+- pypi: git+https://github.com/xraygui/nbs-pods.git#df1b0fa331b5524cfe63c43a81c3daaab7483b0f
   name: nbs-pods
-  version: 0.2.5.dev2+gbb6a158d3
+  version: 0.2.5.dev3+gdf1b0fa33
   requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/66/2b/f5d4205ae14109c792028bc633625203c1e984c38ff1046afaff645a10f2/nbs_sim-0.2.2-py3-none-any.whl
   name: nbs-sim
@@ -12316,9 +12316,9 @@ packages:
   - pkg:pypi/velocity-profile?source=hash-mapping
   size: 19500
   timestamp: 1761831908610
-- pypi: git+https://github.com/nsls-ii-sst/vppem#b738708672bd0cc61364b11e827780141e667138
+- pypi: git+https://github.com/nsls-ii-sst/vppem#4c98524c52fc258942c4f6d7b4f9cd413d72b5b3
   name: vppem
-  version: 0.1.dev7+gb73870867
+  version: 0.1.dev8+g4c98524c5
   requires_dist:
   - bluesky
   - nbs-bl>=0.2
