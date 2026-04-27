@@ -12,24 +12,7 @@ echo "test-profile: pip install -e vppem (--no-deps) completed"
 python -c "import importlib.util as u; print(u.find_spec('vppem'))"
 
 PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 ipython --profile collection -c '
-import os, sys, faulthandler, time, threading
-
-faulthandler.enable(file=sys.stderr)
-
-def _watchdog():
-    pid = os.getpid()
-    while True:
-        time.sleep(60)
-        try:
-            with open(f"/proc/{pid}/status") as f:
-                for line in f:
-                    if line.startswith(("VmRSS", "VmPeak", "Threads")):
-                        print(f"[watchdog] {line.strip()}", flush=True)
-        except Exception:
-            pass
-        faulthandler.dump_traceback(file=sys.stderr, all_threads=True)
-
-threading.Thread(target=_watchdog, daemon=True, name="watchdog").start()
+import os, sys, time
 
 import pytest
 print("test-profile: profile loaded, starting pytest at", time.strftime("%H:%M:%S"), flush=True)
