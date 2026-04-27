@@ -20,13 +20,16 @@ beamline = ["sst2", "sst1"]
 
 
 [settings.redis.md]
-host = "info.sst.nsls2.bnl.gov"
-prefix = "vppem-"
+host = "xf07id1-vppem-redis1.nsls2.bnl.gov"
+ssl=True
+port=6380
+db=0
 
 [settings.redis.info]
-host = "info.sst.nsls2.bnl.gov"
-prefix = "vppem-"
-db = 7
+host = "xf07id1-vppem-redis1.nsls2.bnl.gov"
+ssl=True
+port=6380
+db=1
 
 [settings.logging]
 enabled = true
