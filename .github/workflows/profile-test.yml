@@ -113,30 +113,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          (
-            while true; do
-              echo "=== $(date -u) host resources ==="
-              free -h || true
-              echo "--- /proc/meminfo (key lines) ---"
-              grep -E "^(MemTotal|MemAvailable|SwapTotal|SwapFree|OOM)" /proc/meminfo || true
-              echo "--- load average ---"
-              cat /proc/loadavg || true
-              echo "--- podman container stats (no-stream) ---"
-              podman stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}" 2>/dev/null || true
-              echo "--- podman ps ---"
-              podman ps --format '{{.Names}}\t{{.Status}}' || true
-              echo "--- queueserver logs (tail 30) ---"
-              podman logs --tail 30 queueserver_queueserver_1 2>&1 || true
-              echo "==="
-              sleep 20
-            done
-          ) &
-          MONITOR_PID=$!
-
           pixi run -e pods pods-start --test queueserver
           EXIT_CODE=$?
 
-          kill $MONITOR_PID 2>/dev/null || true
           exit $EXIT_CODE
 
       - name: Tear down minimal pods
