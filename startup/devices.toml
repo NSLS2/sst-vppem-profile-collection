@@ -35,7 +35,7 @@ _group = "motors"
 [sampleVoltage]
 _target = "sst_base.devices.KeithleySMU"
 _group = ["motors"]
-prefix = "XF:07ID1-ES{K2636B:1}"
+prefix = "XF:07ID1{K2636B:1-ChB}"
 name = "sampleVoltage"
 
 [rbd1]
