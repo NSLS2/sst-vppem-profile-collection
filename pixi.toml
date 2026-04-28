@@ -1,6 +1,6 @@
 [workspace]
 channels = ["conda-forge"]
-name = "sst-nexafs-profile-collection"
+name = "sst-vppem-profile-collection"
 platforms = ["linux-64"]
 version = "2025.3.1"
 
