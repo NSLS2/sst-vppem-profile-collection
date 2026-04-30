@@ -23,6 +23,7 @@ __merge__ = "replace"
 enabled = true
 profile = "nbs"
 subscribe_method = "post_document"
+# api_key_env = "TILED_SINGLE_USER_API_KEY"
 
 [settings.kafka]
 name = "nbs"
