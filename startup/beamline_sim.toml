@@ -30,7 +30,7 @@ enabled = false
 name = "nbs"
 
 [settings.zmq]
-hostname = ""
+hostname = "localhost"
 port = 5577
 out_port = 5578
 start_proxy = true
