@@ -23,9 +23,14 @@ __merge__ = "replace"
 enabled = true
 profile = "nbs"
 subscribe_method = "post_document"
+# api_key_env = "TILED_SINGLE_USER_API_KEY"
 
 [settings.kafka]
+enabled = false
 name = "nbs"
 
 [settings.zmq]
-hostname = "zmq_proxy2"
+hostname = "localhost"
+port = 5577
+out_port = 5578
+start_proxy = true

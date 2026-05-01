@@ -47,7 +47,7 @@ def test_nbs_count(RE, db):
 
 def test_nbs_energy_scan(RE, db):
     print("Running nbs energy scan test...")
-    RE(nbs_energy_scan(700, 1.0, 705, dwell=1.0))
+    RE(nbs_energy_scan(1800, 1.0, 1805, dwell=1.0))
     print("nbs energy scan test completed")
     run = db[-1]
     assert run.start['plan_name'] == "nbs_list_scan"

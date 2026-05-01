@@ -6,6 +6,9 @@ BEAMLINE_PODS_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 
 export BEAMLINE_PODS_DIR
 export BEAMLINE_NAME="vppem"
+export TILED_SINGLE_USER_API_KEY=${TILED_SINGLE_USER_API_KEY:-secret}
+export POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-secret}
+export REDIS_PASSWORD=${REDIS_PASSWORD:-secret}
 
 if [[ -z "${NBS_IMAGE_REG:-}" ]]; then
   export NBS_IMAGE_REG="ghcr.io/nsls2/sst-"${BEAMLINE_NAME}"-profile-collection/"${BEAMLINE_NAME}"-"

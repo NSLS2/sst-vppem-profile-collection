@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=ghcr.io/xraygui/nbs-pods/bluesky:latest
+ARG BASE_IMAGE=ghcr.io/xraygui/nbs-pods/bluesky:0.2.5
 FROM ${BASE_IMAGE}
 
 RUN mkdir -p /usr/local/share/ipython/profile_collection /home/xf07id1/.ipython
