@@ -6,6 +6,25 @@ name = "PCOEdge"
 read_attrs = ["hdf5", "stats"]
 _group = ['detectors']
 
+[fs1_cam] # was FS1_cam
+_target = "sst_base.cameras.StandardProsilicawstatsFactory" 
+_group = "all_standard_pros" ## TODO: Does this need another group?
+prefix = "XF:07ID-BI{BPM:1}"
+name = "FS1 white beam stop Camera"
+camera_name = "fs1_cam-1"
+date_template = "%Y/%m"
+read_attrs = ['tiff','stats5']
+
+[fs6_cam] #was FS6_cam
+_target = "sst_base.cameras.StandardProsilicawstatsFactory" 
+_group = "all_standard_pros" ## TODO: Does this need another group?
+prefix = "XF:07ID-BI{BPM:6}"
+name = "FS6 Camera"
+camera_name = "fs6_cam-1"
+date_template = "%Y/%m"
+read_attrs = ['tiff','stats5']
+
+
 [enpostender]
 _target = "sst_base.energy.EnergyTender"
 _group = ["source", "blconf"]
