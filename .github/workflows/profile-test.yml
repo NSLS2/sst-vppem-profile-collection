@@ -93,7 +93,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          pixi run -e pods pods-start --dev sim
+          pixi run -e pods pods-start sim
 
           for _ in $(seq 1 60); do
             timeout 10s podman ps --format '{{.Names}}' | tee podman-ps.txt
