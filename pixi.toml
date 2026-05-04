@@ -114,7 +114,7 @@ sim = "scripts/sim-start.sh"
 sim-dev = "scripts/sim-dev.sh"
 
 [environments]
-terminal = {features=["profile", "terminal"], solve-group="profile"}
+terminal = {features=["profile", "nbs", "terminal"], solve-group="profile"}
 qs = {features=["profile", "nbs", "qs"], solve-group="profile"}
 sim = {features=["profile", "sim", "nbs"]}
 gui = {features=["profile", "nbs", "gui-base", "gui"], solve-group="profile"}
