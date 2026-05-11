@@ -628,7 +628,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/7a/60/aba9f3c3f1f48c7fbdf03bed45b576a916cd09c08242939b5294b85e37b4/qtconsole-5.7.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.3#ee4f1b2bda314025c5f3d9233ef12a6a26499afd
+      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.4#84ae00a022bfef7e137af9616eb8ae71598d71c0
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
       - pypi: git+https://github.com/nsls-ii-sst/vppem#66aeb2d7bebabbaa967de185d6db6e34d6551714
   pods:
@@ -1247,9 +1247,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb78ec9c_6.conda
       - pypi: https://files.pythonhosted.org/packages/3d/39/827b565b3f4ad5d7676b162424ee072abc29bda82c92d18cde859c997764/nbs_bl-0.3.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/90/52/72a2658f67f629871fe71f41097065b1c7b92192ecf46193b87729258f6f/nbs_pods-0.2.5-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/7a/23/d8a6a4685422b928149083ab061fc44ec45ced4fc3414ebfbaa3181546a9/nbs_pods-0.2.6-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.3#ee4f1b2bda314025c5f3d9233ef12a6a26499afd
+      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.4#84ae00a022bfef7e137af9616eb8ae71598d71c0
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
       - pypi: git+https://github.com/nsls-ii-sst/vppem#66aeb2d7bebabbaa967de185d6db6e34d6551714
   qs:
@@ -1874,7 +1874,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/3d/39/827b565b3f4ad5d7676b162424ee072abc29bda82c92d18cde859c997764/nbs_bl-0.3.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.3#ee4f1b2bda314025c5f3d9233ef12a6a26499afd
+      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.4#84ae00a022bfef7e137af9616eb8ae71598d71c0
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
       - pypi: git+https://github.com/nsls-ii-sst/vppem#66aeb2d7bebabbaa967de185d6db6e34d6551714
   sim:
@@ -2494,7 +2494,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3a/e6/4ad1dd469a8e5b4f5e1da7c22bc13d6de263a5a0031460363e89020d069a/nbs_sim-0.2.3-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.3#ee4f1b2bda314025c5f3d9233ef12a6a26499afd
+      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.4#84ae00a022bfef7e137af9616eb8ae71598d71c0
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
       - pypi: git+https://github.com/nsls-ii-sst/vppem#66aeb2d7bebabbaa967de185d6db6e34d6551714
   terminal:
@@ -3113,7 +3113,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/3d/39/827b565b3f4ad5d7676b162424ee072abc29bda82c92d18cde859c997764/nbs_bl-0.3.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a7/aa/a1ef22fd3450c91f037ebd2a601a9955d693479d2fedf191cac309fe3b28/nbs_core-0.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
-      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.3#ee4f1b2bda314025c5f3d9233ef12a6a26499afd
+      - pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.4#84ae00a022bfef7e137af9616eb8ae71598d71c0
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
       - pypi: git+https://github.com/nsls-ii-sst/vppem#66aeb2d7bebabbaa967de185d6db6e34d6551714
   viewer:
@@ -9312,10 +9312,10 @@ packages:
   - nslsii
   - qtpy
   requires_python: '>=3.8'
-- pypi: https://files.pythonhosted.org/packages/90/52/72a2658f67f629871fe71f41097065b1c7b92192ecf46193b87729258f6f/nbs_pods-0.2.5-py3-none-any.whl
+- pypi: https://files.pythonhosted.org/packages/7a/23/d8a6a4685422b928149083ab061fc44ec45ced4fc3414ebfbaa3181546a9/nbs_pods-0.2.6-py3-none-any.whl
   name: nbs-pods
-  version: 0.2.5
-  sha256: 4c7fdab9868ab0df14dbb10697b5fcc65de9bb28daa82c3480eab19e4e3c6365
+  version: 0.2.6
+  sha256: 7d186dbc2c7ba1648eeaa8c181ed6a3566bf63e2de87d6d85f5854df0f576164
   requires_python: '>=3.8'
 - pypi: https://files.pythonhosted.org/packages/3a/e6/4ad1dd469a8e5b4f5e1da7c22bc13d6de263a5a0031460363e89020d069a/nbs_sim-0.2.3-py3-none-any.whl
   name: nbs-sim
@@ -11821,9 +11821,9 @@ packages:
   - pkg:pypi/sqlalchemy?source=compressed-mapping
   size: 3707065
   timestamp: 1775241332871
-- pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.3#ee4f1b2bda314025c5f3d9233ef12a6a26499afd
+- pypi: git+https://github.com/nsls-ii-sst/sst-base?rev=v0.2.4#84ae00a022bfef7e137af9616eb8ae71598d71c0
   name: sst-base
-  version: 0.2.3
+  version: 0.2.4
   requires_dist:
   - bluesky
   - nbs-bl>=0.3.1
