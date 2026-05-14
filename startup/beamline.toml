@@ -49,4 +49,5 @@ subscribe_method = "post_document"
 [settings.zmq]
 enabled = true
 hostname = "localhost"
+start_proxy = true
 port = 5577
