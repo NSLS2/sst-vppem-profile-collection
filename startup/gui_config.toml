@@ -43,6 +43,7 @@ enpostender = { "_role" = "energy", "load_order" = 1 }
 "EpicsMotor" = "nbs_gui.models.MotorModel"
 "MultiMeshBuilder" = "nbs_gui.models.PseudoPositionerModel"
 "QuadSlits" = "sst_base.qt.models.quadSlits.QuadSlitsModel"
+"RBDFactory" = "sst_base.qt.models.rbd9103.RBD9103Model"
 
 [kafka]
 config_file = "/etc/bluesky/kafka.yml"
