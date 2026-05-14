@@ -44,7 +44,7 @@ enabled = true
 profile = "nsls2"
 catalog_path = ["vppem", "raw"]
 api_key_env = "TILED_BLUESKY_WRITING_API_KEY_NEXAFS"
-subscribe_method = "post_document"
+subscribe_method = "tiled_writer"
 
 [settings.zmq]
 enabled = true
