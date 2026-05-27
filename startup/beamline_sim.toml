@@ -21,9 +21,12 @@ method = "nslsii"
 [settings.tiled_writer]
 __merge__ = "replace"
 enabled = true
-profile = "nbs"
-subscribe_method = "post_document"
-# api_key_env = "TILED_SINGLE_USER_API_KEY"
+#profile = "nbs"
+#subscribe_method = "post_document"
+api_key_env = "TILED_SINGLE_USER_API_KEY"
+uri = "http://tiled_server:8000"
+subscribe_method = "tiled_writer"
+
 
 [settings.kafka]
 enabled = false

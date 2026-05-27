@@ -35,9 +35,10 @@ pvxslibs = ">=1.3.2, <2"
 
 [feature.nbs.pypi-dependencies]
 nbs-core = ">=0.2"
-nbs-bl = ">=0.3.2"
-sst-base = { git = "https://github.com/nsls-ii-sst/sst-base", rev = "v0.2.4" }
-vppem = { git = "https://github.com/nsls-ii-sst/vppem" }
+nbs-bl = ">=0.3.3"
+#sst-base = { git = "https://github.com/nsls-ii-sst/sst-base", rev = "v0.2.4" }
+sst-base = { git = "https://github.com/nsls-ii-sst/sst-base", branch = "develop" }
+vppem = { git = "https://github.com/nsls-ii-sst/vppem", branch = "main" }
 
 [feature.gui-base.dependencies]
 asteval = ">=1.0.6,<2"
@@ -48,7 +49,8 @@ pyside6 = "*"
 
 [feature.gui.pypi-dependencies]
 nbs-livetable = ">=0.1.2"
-nbs-gui = ">=0.1.5"
+#nbs-gui = ">=0.1.5"
+nbs-gui ={ git = "https://github.com/xraygui/nbs-gui", branch="develop" }
 qtconsole = "*"
 
 [feature.viewer.dependencies]
@@ -63,13 +65,14 @@ bluesky-httpserver = "*"
 pytest = "*"
 
 [feature.sim.pypi-dependencies]
-nbs-sim = ">=0.2.3"
+nbs-sim = ">=0.2.3, <0.3"
 
 [feature.pods.dependencies]
 podman-compose = "*"
 
 [feature.pods.pypi-dependencies]
-nbs-pods = ">=0.2.6"
+#nbs-pods = ">=0.2.6"
+nbs-pods = { git = "https://github.com/xraygui/nbs-pods", branch = "postgres_fixes" }
 
 [feature.pods.tasks]
 pods = "scripts/pods.sh"
