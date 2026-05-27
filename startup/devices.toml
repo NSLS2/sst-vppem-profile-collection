@@ -57,26 +57,26 @@ _group = ["motors"]
 prefix = "XF:07ID1{K2636B:1-ChB}"
 name = "sampleVoltage"
 
-[rbd1]
+[RBDsampleCurrent]
 _target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:05}"
 rescale = -1
-name = "rbd1"
+name = "SampleCurrentRBD"
 
-[rbd2]
+[PhosphorCurrent]
 _target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:09}"
 rescale = -1
-name = "rbd2"
+name = "PhosphorCurrentRBD"
 
-[rbd3]
+[OuterHemisphere]
 _target = "sst_base.devices.RBDFactory"
 _group = "detectors"
 prefix = "XF:07ID1-ES{RBD9103:12}"
 rescale = -1
-name = "rbd3"
+name = "OuterHemisphereRBD"
 
 [ring_current]
 _target = "ophyd.EpicsSignalRO"
