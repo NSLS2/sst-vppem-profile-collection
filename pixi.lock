@@ -634,7 +634,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/69/76/37c0ccd5ab968a6a438f9c623aeecc84c202ab2fabc6a8fd927580c15b5a/QtPy-2.4.3-py3-none-any.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#0273c6318f23db1c5eeb47a6e288771b7d9e9f81
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#e1cdae525ec950bfd3c1d1b58cc996fdba7c3168
+      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#1ac93928685ddce0c227fdbdd60db1f95483343b
   pods:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -1257,7 +1257,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#0273c6318f23db1c5eeb47a6e288771b7d9e9f81
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#e1cdae525ec950bfd3c1d1b58cc996fdba7c3168
+      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#1ac93928685ddce0c227fdbdd60db1f95483343b
   qs:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -1884,7 +1884,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#0273c6318f23db1c5eeb47a6e288771b7d9e9f81
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#e1cdae525ec950bfd3c1d1b58cc996fdba7c3168
+      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#1ac93928685ddce0c227fdbdd60db1f95483343b
   sim:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -2506,7 +2506,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#0273c6318f23db1c5eeb47a6e288771b7d9e9f81
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#e1cdae525ec950bfd3c1d1b58cc996fdba7c3168
+      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#1ac93928685ddce0c227fdbdd60db1f95483343b
   terminal:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -3127,7 +3127,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/67/d8/8af47ecca80c365d5ffcdce6fae78ec71921052189c1486ba9dbac7a36f4/pvxslibs-1.3.2-cp312-cp312-manylinux2014_x86_64.whl
       - pypi: git+https://github.com/nsls-ii-sst/sst-base?branch=develop#0273c6318f23db1c5eeb47a6e288771b7d9e9f81
       - pypi: https://files.pythonhosted.org/packages/c7/18/c86eb8e0202e32dd3df50d43d7ff9854f8e0603945ff398974c1d91ac1ef/tomli_w-1.2.0-py3-none-any.whl
-      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#e1cdae525ec950bfd3c1d1b58cc996fdba7c3168
+      - pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#1ac93928685ddce0c227fdbdd60db1f95483343b
   viewer:
     channels:
     - url: https://conda.anaconda.org/conda-forge/
@@ -12347,9 +12347,9 @@ packages:
   - pkg:pypi/velocity-profile?source=hash-mapping
   size: 19500
   timestamp: 1761831908610
-- pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#e1cdae525ec950bfd3c1d1b58cc996fdba7c3168
+- pypi: git+https://github.com/nsls-ii-sst/vppem?branch=main#1ac93928685ddce0c227fdbdd60db1f95483343b
   name: vppem
-  version: 0.1.dev27+ge1cdae525
+  version: 0.1.dev28+g1ac939286
   requires_dist:
   - bluesky
   - nbs-bl>=0.2
