@@ -1,0 +1,72 @@
+name: Re-tag Release Images
+
+on:
+  push:
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  retag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+
+    - name: Log in to Container Registry
+      uses: docker/login-action@v4
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Resolve version and image tag
+      id: resolve
+      shell: bash
+      run: |
+        set -euo pipefail
+        VERSION="$(sed -n 's/^version *= *"\(.*\)"/\1/p' pixi.toml | head -n 1)"
+        if [[ -z "${VERSION}" ]]; then
+          echo "Could not read version from pixi.toml" >&2
+          exit 1
+        fi
+        if [[ "${GITHUB_REF_TYPE}" == "tag" && "${GITHUB_REF_NAME#v}" != "${VERSION}" ]]; then
+          echo "Git tag ${GITHUB_REF_NAME} does not match pixi.toml version ${VERSION}" >&2
+          exit 1
+        fi
+        TAG="$(ci/image-tag.sh)"
+        echo "Releasing env tag ${TAG} as ${VERSION}"
+        echo "repo=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+        echo "source_tag=${TAG}" >> "$GITHUB_OUTPUT"
+        echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+        echo "major_minor=${VERSION%.*}" >> "$GITHUB_OUTPUT"
+
+    - name: Re-tag images as release
+      shell: bash
+      run: |
+        set -euo pipefail
+        REPO="${{ steps.resolve.outputs.repo }}"
+        SOURCE="${{ steps.resolve.outputs.source_tag }}"
+        VERSION="${{ steps.resolve.outputs.version }}"
+        MAJOR_MINOR="${{ steps.resolve.outputs.major_minor }}"
+        IMAGES=(queueserver gui sim)
+
+        for image in "${IMAGES[@]}"; do
+          if ! docker buildx imagetools inspect "${REPO}/vppem-${image}:${SOURCE}" >/dev/null 2>&1; then
+            echo "Missing ${REPO}/vppem-${image}:${SOURCE}; has CI built this commit?" >&2
+            exit 1
+          fi
+        done
+
+        for image in "${IMAGES[@]}"; do
+          docker buildx imagetools create \
+            --tag "${REPO}/vppem-${image}:${VERSION}" \
+            --tag "${REPO}/vppem-${image}:${MAJOR_MINOR}" \
+            --tag "${REPO}/vppem-${image}:latest" \
+            "${REPO}/vppem-${image}:${SOURCE}"
+        done

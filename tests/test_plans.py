@@ -8,7 +8,7 @@ from bluesky.plans import count
 def test_set_exposure(RE):
     print("Running set exposure test...")
     pco = bl['pco']
-    rbd = bl['rbd1']
+    rbd = bl['RBDsampleCurrent']
     print(f"PCO default acquire time: {pco.cam.acquire_time.get(timeout=10)}", flush=True)
     print(f"RBD default acquire time: {rbd.exposure_time.get(timeout=10)}", flush=True)
     RE(set_exposure(1.0))
@@ -26,16 +26,16 @@ def test_count_pco(RE, db):
     print("pco count test completed")
     run = db[-1]
     assert run.start['plan_name'] == "count"
-    assert run.primary['data']['time'].shape == (10,)
+    assert run.primary['time'].shape == (10,)
 
 def test_rbd(RE, db):
     print("Running rbd count test...")
-    rbd = bl['rbd1']
+    rbd = bl['RBDsampleCurrent']
     rbd.set_exposure(1.0)
     RE(count([rbd], num=10))
     run = db[-1]
     assert run.start['plan_name'] == "count"
-    assert run.primary['data']['time'].shape == (10,)
+    assert run.primary['time'].shape == (10,)
 
 def test_nbs_count(RE, db):
     print("Running nbs count test...")
@@ -43,7 +43,7 @@ def test_nbs_count(RE, db):
     print("nbs count test completed")
     run = db[-1]
     assert run.start['plan_name'] == "nbs_count"
-    assert run.primary['data']['time'].shape == (10,)
+    assert run.primary['time'].shape == (10,)
 
 def test_nbs_energy_scan(RE, db):
     print("Running nbs energy scan test...")
@@ -51,4 +51,4 @@ def test_nbs_energy_scan(RE, db):
     print("nbs energy scan test completed")
     run = db[-1]
     assert run.start['plan_name'] == "nbs_list_scan"
-    assert run.primary['data']['time'].shape == (6,)
+    assert run.primary['time'].shape == (6,)

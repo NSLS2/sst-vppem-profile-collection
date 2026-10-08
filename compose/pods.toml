@@ -1,6 +1,7 @@
 [presets]
 demo = ["bluesky-services", "adsim", "sim", "gui", "queueserver"]
 develop = ["bluesky-services", "adsim", "--dev", "sim", "gui", "queueserver"]
+test = ["bluesky-services", "adsim", "--dev", "sim", "--test", "queueserver"]
 
 [bluesky-services]
 variants = ["postgres"]
