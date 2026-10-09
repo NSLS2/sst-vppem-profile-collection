@@ -20,20 +20,20 @@ beamline = ["sst2", "sst1"]
 
 
 [settings.redis.md]
-# host = "xf07id1-vppem-redis1.nsls2.bnl.gov"
-# ssl = true
-# port = 6380
-host = "info.sst.nsls2.bnl.gov"
-prefix = "vppem-"
-db = 0
+host = "xf07id1-vppem-redis1.nsls2.bnl.gov"
+ssl = true
+port = 6380
+#host = "info.sst.nsls2.bnl.gov"
+#prefix = "vppem-"
+#db = 0
 
 [settings.redis.info]
-# host = "xf07id1-vppem-redis1.nsls2.bnl.gov"
-# ssl= true
-# port = 6380
-host = "info.sst.nsls2.bnl.gov"
-prefix = "vppem-"
-db = 7
+host = "xf07id1-vppem-redis1.nsls2.bnl.gov"
+ssl= true
+port = 6380
+#host = "info.sst.nsls2.bnl.gov"
+#prefix = "vppem-"
+db = 1
 
 [settings.logging]
 enabled = true
@@ -43,10 +43,11 @@ method = "nslsii"
 enabled = true
 profile = "nsls2"
 catalog_path = ["vppem", "raw"]
-api_key_env = "TILED_BLUESKY_WRITING_API_KEY_NEXAFS"
-subscribe_method = "post_document"
+api_key_env = "TILED_BLUESKY_WRITING_API_KEY_VPPEM"
+subscribe_method = "tiled_writer"
 
 [settings.zmq]
 enabled = true
 hostname = "localhost"
+start_proxy = true
 port = 5577

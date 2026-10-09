@@ -1,0 +1,7 @@
+services:
+  tiled_server:
+    volumes:
+      - /tmp/proposals:/nsls2/data/sst/proposals
+    image: ghcr.io/nsls2/databroker-nsls2:main
+    environment:
+      - HDF5_USE_FILE_LOCKING=TRUE

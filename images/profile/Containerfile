@@ -1,0 +1,28 @@
+ARG BASE_IMAGE=ghcr.io/xraygui/nbs-pods/bluesky:0.2.8
+FROM ${BASE_IMAGE}
+
+RUN mkdir -p /usr/local/share/ipython/profile_collection \
+    /home/xf07id1/.ipython \
+    /home/xf07id1/collection_packages \
+    && ln -sf /usr/local/share/ipython/profile_collection /home/xf07id1/.ipython/profile_collection
+
+WORKDIR /usr/local/share/ipython/profile_collection
+
+COPY pixi.toml pixi.lock ./
+
+RUN VPPEM_REV="$(grep -oE 'nsls-ii-sst/vppem\?[^#]*#[0-9a-f]{40}' pixi.lock | head -n 1 | cut -d '#' -f 2)" \
+    && test -n "${VPPEM_REV}" \
+    && git clone https://github.com/nsls-ii-sst/vppem.git /home/xf07id1/collection_packages/vppem \
+    && git -C /home/xf07id1/collection_packages/vppem checkout --detach "${VPPEM_REV}"
+
+ARG PIXI_ENV
+RUN test -n "${PIXI_ENV}" \
+    && pixi install -e "${PIXI_ENV}" \
+    && rm -rf ~/.cache/rattler
+
+COPY scripts/ scripts/
+COPY startup/ startup/
+COPY tests/ tests/
+
+ENV PIXI_ENV=${PIXI_ENV}
+CMD exec pixi run "${PIXI_ENV}"

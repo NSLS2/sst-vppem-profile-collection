@@ -1,7 +1,0 @@
-ARG BASE_IMAGE=vppem-bluesky:latest
-FROM ${BASE_IMAGE}
-
-RUN pixi install -e qs && rm -rf ~/.cache/rattler
-
-CMD ["pixi", "run", "qs"]
-
