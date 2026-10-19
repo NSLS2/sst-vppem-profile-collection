@@ -179,13 +179,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Tag images as ${{ github.ref_name }} and latest
+      - name: Tag images as ${{ github.ref_name }}
         shell: bash
         run: |
           set -euo pipefail
           for image in queueserver gui sim; do
             docker buildx imagetools create \
               --tag "${REPO}/vppem-${image}:${GITHUB_REF_NAME}" \
-              --tag "${REPO}/vppem-${image}:latest" \
               "${REPO}/vppem-${image}:${TAG}"
           done
