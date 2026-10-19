@@ -105,6 +105,44 @@ jobs:
           cache-from: type=registry,ref=${{ env.IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.IMAGE }}:buildcache,mode=max
 
+  tag-pr:
+    needs: [ image-tag, build ]
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      REPO: ${{ needs.image-tag.outputs.repo }}
+      TAG: ${{ needs.image-tag.outputs.tag }}
+      PR_TAG: pr-${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag images as ${{ env.PR_TAG }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          CURRENT="$(git ls-remote origin "refs/pull/${{ github.event.pull_request.number }}/head" | awk '{print $1}')"
+          if [[ -z "${CURRENT}" || "${CURRENT}" != "${HEAD_SHA}" ]]; then
+            echo "Pull request head moved (${HEAD_SHA} -> ${CURRENT:-missing}); skipping ${PR_TAG}."
+            exit 0
+          fi
+          for image in queueserver gui sim; do
+            docker buildx imagetools create \
+              --tag "${REPO}/vppem-${image}:${PR_TAG}" \
+              "${REPO}/vppem-${image}:${TAG}"
+          done
+
   test:
     needs: [ image-tag, build ]
     runs-on: ubuntu-latest
@@ -126,7 +164,7 @@ jobs:
 
   tag-branch:
     needs: [ image-tag, test ]
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.ref_name == 'main' && github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     permissions:
       packages: write

@@ -1,9 +1,9 @@
 import pytest
-from nbs_bl.plans.scans import nbs_count, nbs_energy_scan
+from nbs_bl.plans.scans import nbs_count, nbs_energy_scan, nbs_scan
 from nbs_bl.plans.plan_stubs import set_exposure
 from nbs_bl.beamline import GLOBAL_BEAMLINE as bl
 from bluesky.plans import count
-
+import time as ttime
 
 def test_set_exposure(RE):
     print("Running set exposure test...")
@@ -52,3 +52,17 @@ def test_nbs_energy_scan(RE, db):
     run = db[-1]
     assert run.start['plan_name'] == "nbs_list_scan"
     assert run.primary['time'].shape == (6,)
+
+def test_sample_voltage(RE, db):
+    print("Running sample voltage test...")
+    sampleVoltage = bl['sampleVoltage']
+    npts = 3
+    t1 = ttime.time()
+    RE(nbs_scan(sampleVoltage, 0, 2, npts, dwell=1.0, settle_time=0.5))
+    t2 = ttime.time()
+    print(f"Sample voltage scan time: {t2 - t1}")
+    run = db[-1]
+    assert run.start['plan_name'] == "nbs_scan"
+    assert run.primary['time'].shape == (npts,)
+    # Scan should take dwell + settle time, but subtract a buffer due to imprecision in timing
+    assert t2 - t1 > npts*(1 + 0.5 - 0.05) 
